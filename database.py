@@ -29,7 +29,7 @@ def task_in_progress():
         conP = sq.connect('taskProgress.db')
         cursorP = conP.cursor()
         cursorP.execute('''
-                        CREATE TABLE IF NOT EXISTS task(
+                        CREATE TABLE IF NOT EXISTS task_progress(
                            id INTEGER PRIMARY KEY AUTOINCREMENT,
                            task_name TEXT NOT NULL,
                            des TEXT,
@@ -49,7 +49,7 @@ def database_done_tasks():
         conP = sq.connect('done_task.db')
         cursorP = conP.cursor()
         cursorP.execute('''
-                        CREATE TABLE IF NOT EXISTS task(
+                        CREATE TABLE IF NOT EXISTS task_done(
                            id INTEGER PRIMARY KEY AUTOINCREMENT,
                            task_name TEXT NOT NULL,
                            des TEXT,
