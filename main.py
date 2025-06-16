@@ -1,4 +1,6 @@
-from funntions import menu
+from funntions import menu,database
 
+
+database()
 
 menu()
