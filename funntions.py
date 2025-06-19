@@ -3,7 +3,6 @@ import database
 
 def database_create():
     database.task_list_create()
-    database.database_done_tasks()
 
 def menu():
     print(
@@ -96,6 +95,10 @@ def task_in_progress():
             print(f'f"------------------\nId = {task[0]}\nName: {task[1]}\nDescription: {task[2]}\nStatus: In progress')
     except sq.Error as e:
         print(f'Error: {e}')
+    finally:
+        con1.commit()
+        con1.close()
+        
         
         
 def task_done():
@@ -108,6 +111,39 @@ def task_done():
             print(f'f"------------------\nId = {task[0]}\nName: {task[1]}\nDescription: {task[2]}\nStatus: Done')
     except sq.Error as e:
         print(f'Error: {e}')
+    finally:
+        con1.commit()
+        con1.close()
+        
+def task_delete():
+    try:
+        con1 = sq.connect('task_list.db')
+        cursor_main = con1.cursor()
+        try:
+            task = int(input('Insert task ID: '))
+        except ValueError:
+            print('Insert a valid number')
+            return
+        confirm = input('Are you sure?(yes-no): ').strip().lower()
+        if confirm not in ('yes', 'no'):
+            print('This is not a valid answer. Please type "yes" or "no".')
+            return
+        if confirm == 'yes':
+            cursor_main.execute('''DELETE FROM task WHERE id = ?''', (task,))
+            if cursor_main.rowcount == 0:
+                print('Task ID doesnt exist')
+            else:
+                print('Task Deleted')
+        else:
+            return
+    except sq.Error as e:
+        print(f'Error: {e}')
+    finally:
+        con1.commit()
+        con1.close()
+        
+                
+    
         
         
         

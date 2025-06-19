@@ -1,4 +1,4 @@
-from funntions import menu,database_create,selector,task_list,create_task,update_task,task_in_progress,task_done
+from funntions import menu,database_create,selector,task_list,create_task,update_task,task_in_progress,task_done,task_delete
 import sqlite3
 
 database_create()
@@ -24,5 +24,8 @@ while True:
     elif opcion == 5:
         task_in_progress()
     elif opcion == 6:
+        task_delete()
+    else:
+        break
         
     
