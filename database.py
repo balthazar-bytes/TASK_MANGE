@@ -13,7 +13,7 @@ def task_list_create():
                        )
             ''')
         '''
-        0 = not iun progress
+        0 = not in progress
         1  = in progress
         2 = done
         '''
